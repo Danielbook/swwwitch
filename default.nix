@@ -1,15 +1,21 @@
 {
   lib,
   buildGoModule,
+  fetchFromGitHub,
   swww,
 }:
 buildGoModule rec {
   pname = "swwwitch";
-  version = "0.1.0";
+  version = "1.0.0";
 
-  src = ./.;
+  src = fetchFromGitHub {
+    owner = "Danielbook";
+    repo = "swwwitch";
+    rev = "v${version}";
+    hash = "sha256-giKDk0UzNJRvXAwQCZRel9uAcTg5SuMtWj6qLeUF6qg=";
+  };
 
-  vendorHash = null;
+  vendorHash = null; # No Go dependencies
 
   nativeBuildInputs = [swww];
 
@@ -19,10 +25,15 @@ buildGoModule rec {
   ];
 
   meta = with lib; {
-    description = "A CLI tool for switching wallpapers with swww on Wayland";
+    description = "CLI wallpaper switcher for swww on Wayland";
     homepage = "https://github.com/Danielbook/swwwitch";
     license = licenses.mit;
-    maintainers = [];
+    maintainers = [{
+      name = "Daniel Book";
+      email = "daniel@bookorjeman.se";
+      github = "Danielbook";
+      githubId = 6060731;
+    }];
     platforms = platforms.linux;
     mainProgram = "swwwitch";
   };
