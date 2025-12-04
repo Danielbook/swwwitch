@@ -12,7 +12,7 @@ buildGoModule rec {
     owner = "Danielbook";
     repo = "swwwitch";
     rev = "v${version}";
-    hash = "sha256-3c7JV2zGj2ViibivDZnTnKgbVTpgkTJtGy51UBxFzh4=";
+    hash = "sha256-AeLaclQ6af7qLEaZT/i8K4hG5kjhWupBANFN5svCW3g=";
   };
 
   vendorHash = null; # No Go dependencies
