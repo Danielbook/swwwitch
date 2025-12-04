@@ -177,7 +177,7 @@ func setWallpaper(path string) {
 		exitWithError("File not found: %s", path)
 	}
 
-	ensureSwwwDaemonRunning()
+	ensureAwwwDaemonRunning()
 
 	cmd := exec.Command("awww", "img", path,
 		"--transition-type", cfg.transitionType,
@@ -304,8 +304,8 @@ func dirExists(path string) bool {
 // awww Daemon Management
 // =============================================================================
 
-func ensureSwwwDaemonRunning() {
-	if isSwwwRunning() {
+func ensureAwwwDaemonRunning() {
+	if isAwwwRunning() {
 		return
 	}
 
@@ -317,7 +317,7 @@ func ensureSwwwDaemonRunning() {
 	time.Sleep(time.Second) // Give daemon time to start
 }
 
-func isSwwwRunning() bool {
+func isAwwwRunning() bool {
 	cmd := exec.Command("pgrep", "-x", "awww-daemon")
 	return cmd.Run() == nil
 }
