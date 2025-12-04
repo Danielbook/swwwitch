@@ -4,19 +4,26 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+    awww = {
+      url = "git+https://codeberg.org/LGFae/awww";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
     self,
     nixpkgs,
     flake-utils,
+    awww,
   }:
     flake-utils.lib.eachDefaultSystem (
       system: let
         pkgs = nixpkgs.legacyPackages.${system};
       in {
         packages = {
-          swwwitch = pkgs.callPackage ./default.nix {};
+          swwwitch = pkgs.callPackage ./default.nix {
+            awww = awww.packages.${system}.default;
+          };
           default = self.packages.${system}.swwwitch;
         };
 
@@ -29,8 +36,8 @@
         };
 
         devShells.default = pkgs.mkShell {
-          buildInputs = with pkgs; [
-            awww
+          buildInputs = [
+            awww.packages.${system}.default
           ];
         };
       }
