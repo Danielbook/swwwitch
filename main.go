@@ -179,7 +179,7 @@ func setWallpaper(path string) {
 
 	ensureSwwwDaemonRunning()
 
-	cmd := exec.Command("swww", "img", path,
+	cmd := exec.Command("awww", "img", path,
 		"--transition-type", cfg.transitionType,
 		"--transition-duration", fmt.Sprintf("%d", cfg.transitionDuration))
 
@@ -301,7 +301,7 @@ func dirExists(path string) bool {
 }
 
 // =============================================================================
-// swww Daemon Management
+// awww Daemon Management
 // =============================================================================
 
 func ensureSwwwDaemonRunning() {
@@ -309,16 +309,16 @@ func ensureSwwwDaemonRunning() {
 		return
 	}
 
-	fmt.Println("Starting swww daemon...")
-	cmd := exec.Command("swww-daemon")
+	fmt.Println("Starting awww daemon...")
+	cmd := exec.Command("awww-daemon")
 	if err := cmd.Start(); err != nil {
-		exitWithError("Failed to start swww daemon: %v", err)
+		exitWithError("Failed to start awww daemon: %v", err)
 	}
 	time.Sleep(time.Second) // Give daemon time to start
 }
 
 func isSwwwRunning() bool {
-	cmd := exec.Command("pgrep", "-x", "swww-daemon")
+	cmd := exec.Command("pgrep", "-x", "awww-daemon")
 	return cmd.Run() == nil
 }
 
@@ -331,7 +331,7 @@ func printVersion() {
 }
 
 func printHelp() {
-	fmt.Print(`swwwitch - Wallpaper switcher for swww
+	fmt.Print(`swwwitch - Wallpaper switcher for awww
 
 Usage: swwwitch [OPTION] [CATEGORY/FILE]
 

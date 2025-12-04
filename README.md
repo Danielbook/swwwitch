@@ -1,6 +1,6 @@
 # swwwitch
 
-CLI wallpaper switcher for [swww](https://github.com/LGFae/swww) on Wayland.
+CLI wallpaper switcher for [awww](https://codeberg.org/LGFae/awww) on Wayland.
 
 ## Features
 
@@ -90,7 +90,7 @@ OnUnitActiveSec=30min
 
 ## Requirements
 
-- [swww](https://github.com/LGFae/swww)
+- [awww](https://codeberg.org/LGFae/awww)
 - Wayland compositor
 
 ## License

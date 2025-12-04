@@ -2,7 +2,7 @@
   lib,
   buildGoModule,
   fetchFromGitHub,
-  swww,
+  awww,
 }:
 buildGoModule rec {
   pname = "swwwitch";
@@ -17,7 +17,7 @@ buildGoModule rec {
 
   vendorHash = null; # No Go dependencies
 
-  nativeBuildInputs = [swww];
+  nativeBuildInputs = [awww];
 
   ldflags = [
     "-s"
@@ -25,7 +25,7 @@ buildGoModule rec {
   ];
 
   meta = with lib; {
-    description = "CLI wallpaper switcher for swww on Wayland";
+    description = "CLI wallpaper switcher for awww on Wayland";
     homepage = "https://github.com/Danielbook/swwwitch";
     license = licenses.mit;
     maintainers = [{

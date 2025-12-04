@@ -1,5 +1,5 @@
 {
-  description = "A CLI tool for switching wallpapers with swww on Wayland";
+  description = "A CLI tool for switching wallpapers with awww on Wayland";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -30,7 +30,7 @@
 
         devShells.default = pkgs.mkShell {
           buildInputs = with pkgs; [
-            swww
+            awww
           ];
         };
       }
